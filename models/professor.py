@@ -1,4 +1,5 @@
 from . import db
+from sqlalchemy.orm import relationship
 
 class Professor(db.Model):
     __tablename__ = 'professores'
@@ -8,3 +9,5 @@ class Professor(db.Model):
     idade = db.Column(db.Integer, nullable=False)
     materia = db.Column(db.String(100), nullable=False)
     observacoes = db.Column(db.String(100))
+
+    turmas = relationship("Turma", back_populates="professor")

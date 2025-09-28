@@ -1,4 +1,5 @@
 from . import db
+from sqlalchemy.orm import relationship
 
 class Aluno(db.Model):
     __tablename__ = 'alunos'
@@ -11,3 +12,5 @@ class Aluno(db.Model):
     nota_primeiro_semestre = db.Column(db.Float)
     nota_segundo_semestre = db.Column(db.Float)
     media_final = db.Column(db.Float)
+
+    turma = relationship("Turma", back_populates="alunos")
