@@ -1,6 +1,6 @@
 from flask import request, jsonify
+from datetime import datetime
 from models.aluno import Aluno, db
-
 
 class AlunoController:
 
@@ -36,7 +36,7 @@ class AlunoController:
         if error_response:
             return error_response, status
 
-        obrigatorios = ["nome", "email", "idade", "data_nascimento", "turma_id"]
+        obrigatorios = ["nome", "idade", "data_nascimento", "turma_id"]
         for campo in obrigatorios:
             if campo not in data:
                 return jsonify({"error": f"Campo obrigatório {campo} ausente"}), 400
@@ -44,8 +44,7 @@ class AlunoController:
         novo_aluno = Aluno(
             nome=data["nome"],
             idade=data["idade"],
-            email=data["email"],
-            data_nascimento=data["data_nascimento"],
+            data_nascimento=datetime.strptime(data["data_nascimento"], "%Y-%m-%d").date(),
             turma_id=data["turma_id"],
             nota_primeiro_semestre=data.get("nota_primeiro_semestre"),
             nota_segundo_semestre=data.get("nota_segundo_semestre"),
@@ -70,13 +69,16 @@ class AlunoController:
             return error_response, status
 
         campos = [
-            "nome", "idade", "email", "data_nascimento",
+            "nome", "idade", "data_nascimento",
             "turma_id", "nota_primeiro_semestre",
             "nota_segundo_semestre", "media_final"
         ]
         for campo in campos:
             if campo in data:
-                setattr(aluno, campo, data[campo])
+                if campo == "data_nascimento" and data[campo]:
+                    setattr(aluno, campo, datetime.strptime(data[campo], "%Y-%m-%d").date())
+                else:
+                    setattr(aluno, campo, data[campo])
 
         db.session.commit()
         return jsonify(aluno.to_dict()), 200
