@@ -11,3 +11,12 @@ class Professor(db.Model):
     observacoes = db.Column(db.String(100))
 
     turmas = relationship("Turma", back_populates="professor")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade,
+            "materia": self.materia,
+            "observacoes": self.observacoes
+        }

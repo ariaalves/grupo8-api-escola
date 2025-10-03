@@ -14,3 +14,15 @@ class Aluno(db.Model):
     media_final = db.Column(db.Float)
 
     turma = relationship("Turma", back_populates="alunos")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade,
+            "data_nascimento": self.data_nascimento.isoformat(),
+            "turma_id": self.turma_id,
+            "nota_primeiro_semestre": self.nota_primeiro_semestre,
+            "nota_segundo_semestre": self.nota_segundo_semestre,
+            "media_final": self.media_final
+        }
