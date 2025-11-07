@@ -9,4 +9,4 @@ class Atividade(db.Model):
     peso_porcento = db.Column(db.Integer,nullable=False)
     data_entrega = db.Column(db.Date, nullable=False)
     turma_id = db.Column(db.Integer, db.ForeignKey('turmas.id'), nullable=False)
-    professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'), nullable=False)
+    professor_id = db.Column(db.Integer, db.ForeignKey('professores.id'), nullable=False)
