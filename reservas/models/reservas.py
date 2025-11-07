@@ -7,7 +7,8 @@ class Reserva(db.Model):
     num_sala = db.Column(db.Integer, nullable=False)
     lab = db.Column(db.Boolean, default=False)
     data = db.Column(db.Date, nullable=False)
-    turma_id = db.Column(db.Integer, nullable=False)
+    turma_id = db.Column(db.Integer, db.ForeignKey('turmas.id'), nullable=False)
+
 
     def __init__(self, num_sala, lab, data, turma_id):
         self.num_sala = num_sala
