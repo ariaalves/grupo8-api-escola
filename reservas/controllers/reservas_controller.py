@@ -70,7 +70,7 @@ class ReservaController:
         if error_response:
          return error_response, status
 
-        campos = ["data", "hora_inicio", "hora_fim", "turma_id", "num_sala", "lab"]
+        campos = ["data", "turma_id", "num_sala", "lab"]
 
         for campo in campos:
             if campo in data:

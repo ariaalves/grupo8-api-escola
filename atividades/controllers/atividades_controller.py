@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from datetime import datetime
-from models.atividade import Atividade, db
+from models.atividades import Atividade, db
 
 class AtividadeController:
 

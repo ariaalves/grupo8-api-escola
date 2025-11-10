@@ -1,6 +1,9 @@
 from flask import Flask
 from flasgger import Swagger
 from models import db
+from models.aluno import Aluno
+from models.turma import Turma
+from models.professor import Professor
 from config import Config
 from controllers.aluno_controller import AlunoController
 from controllers.turma_controller import TurmaController
@@ -280,4 +283,4 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
