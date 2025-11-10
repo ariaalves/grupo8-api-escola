@@ -52,9 +52,9 @@ Se as portas do seu `docker-compose.yml` forem diferentes, ajuste conforme neces
 Cada microserviço possui sua própria documentação Swagger.
 Assumindo que está configurado em `/apidocs`:
 
-* **Swagger do Gerenciamento:** [http://localhost:8000/docs](http://localhost:8000/apidocs)
-* **Swagger de Reservas:** [http://localhost:8001/docs](http://localhost:8001/apidocs)
-* **Swagger de Pagamentos:** [http://localhost:8002/docs](http://localhost:8002/apidocs)
+* **Swagger do Gerenciamento:** [http://localhost:8000/apidocs](http://localhost:8000/apidocs)
+* **Swagger de Reservas:** [http://localhost:8001/apidocs](http://localhost:8001/apidocs)
+* **Swagger de Pagamentos:** [http://localhost:8002/apidocs](http://localhost:8002/apidocs)
 
 Todos utilizam o mesmo path `/apidocs`, mas cada um roda em uma porta diferente, então não há conflito.
 
