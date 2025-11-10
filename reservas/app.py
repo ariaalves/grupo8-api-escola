@@ -1,6 +1,7 @@
 from flask import Flask
 from flasgger import Swagger
 from models import db
+from models.reservas import Reserva
 from config import Config
 from controllers.reservas_controller import ReservaController
 
@@ -111,4 +112,4 @@ def delete_reserva(reserva_id):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
